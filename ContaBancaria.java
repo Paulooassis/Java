@@ -1,4 +1,4 @@
-package Banco;
+import java.util.Scanner;
 
 public class ContaBancaria {
 private int numero;
@@ -24,6 +24,7 @@ public ContaBancaria(int numero, String cpf, double limite, double saldo) {
 	this.limite = limite;
 	this.saldo = saldo;
 }
+
 
 public void sacar(double valor) {
 	if(saldo >= valor) {
@@ -51,8 +52,24 @@ public String getInfo() {
 }
 
 public static void main(String[] args) {
-	ContaBancaria C = new ContaBancaria(50000, "10215", 200.0, 150.2);
+	ContaBancaria C = new ContaBancaria(50, "10215", 200.0, 150.2);
+	
+	double valor;
+	
+	Scanner teclado = new Scanner(System.in);
+	System.out.println("Digite um valor para depositar: ");
+	valor = teclado.nextDouble();
+	
+	C.depositar(valor);
+	System.out.println(C.getInfo());
+	
+	System.out.println("Digite um valor para sacar: ");
+	valor = teclado.nextDouble();
+	
+	teclado.close();
+	
+	C.sacar(valor);
 	System.out.println(C.getInfo());
 }
 
-} 	
+}
